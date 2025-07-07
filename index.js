@@ -7,7 +7,7 @@ import js from '@eslint/js'
 import tseslint from '@typescript-eslint/eslint-plugin'
 import tsparser from '@typescript-eslint/parser'
 
-export default [
+const config = [
 	js.configs.recommended,
 	{
 		files: ['**/*.ts', '**/*.js'],
@@ -88,4 +88,7 @@ export default [
 			'.bun/',
 		],
 	},
-] 
+]
+
+export default config
+export { config } 
