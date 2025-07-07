@@ -1,0 +1,59 @@
+{
+<<<<<<< HEAD
+	"name": "ttsp-eslint-config",
+	"version": "0.0.5",
+	"description": "Shared ESLint configuration for TTSP packages",
+	"module": "index.ts",
+	"type": "module",
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"README.md"
+	],
+	"dependencies": {
+		"eslint": "^9.0.0",
+		"@typescript-eslint/eslint-plugin": "^8.0.0",
+		"@typescript-eslint/parser": "^8.0.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.0",
+		"prettier": "^3.0.0"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"typescript": "^5.0.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:ttsp-00/ttsp-eslint-config.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ttsp-00/ttsp-eslint-config/issues"
+	},
+	"homepage": "https://github.com/ttsp-00/ttsp-eslint-config#readme",
+	"keywords": [
+		"eslint",
+		"eslint-config",
+		"typescript",
+		"bun",
+		"ttsp"
+	],
+	"license": "MIT"
+=======
+  "name": "api",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "elysia": "latest"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+>>>>>>> 14eaee70628a459f300e75726e8c7f7deb962fd5
+}
