@@ -86,8 +86,6 @@ const config = [
 			'*.min.js',
 			'coverage/',
 			'.bun/',
-			'*.toml',
-			'bunfig.toml',
 		],
 	},
 ]
