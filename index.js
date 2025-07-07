@@ -72,7 +72,7 @@ const config = [
 	},
 	{
 		// Configuration files
-		files: ['*.config.js', '*.config.ts', 'bunfig.toml'],
+		files: ['*.config.js', '*.config.ts'],
 		rules: {
 			'@typescript-eslint/no-var-requires': 'off',
 			'no-undef': 'off',
@@ -86,6 +86,7 @@ const config = [
 			'*.min.js',
 			'coverage/',
 			'.bun/',
+			'bunfig.toml',
 		],
 	},
 ]
