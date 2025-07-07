@@ -2,7 +2,7 @@
 	"name": "ttsp-eslint-config",
 	"version": "0.0.6",
 	"description": "Shared ESLint configuration for TTSP packages",
-	"main": "index.js",
+	"main": "./index.js",
 	"type": "module",
 	"files": [
 		"index.js",
