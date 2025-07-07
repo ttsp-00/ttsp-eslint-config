@@ -9,6 +9,7 @@ Shared ESLint configuration for TTSP packages with TypeScript and Bun support.
 - **Bun runtime** optimizations
 - **Test files** support with relaxed rules
 - **Modern ES2024** features enabled
+- **No Prettier dependencies** - pure ESLint configuration
 
 ## Installation
 
@@ -23,68 +24,18 @@ bun add -D ttsp-eslint-config
 Create `eslint.config.js` in your project:
 
 ```javascript
-import js from '@eslint/js'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsparser from '@typescript-eslint/parser'
+import { config } from 'ttsp-eslint-config'
 
-export default [
-	js.configs.recommended,
-	{
-		files: ['**/*.ts', '**/*.js'],
-		languageOptions: {
-			parser: tsparser,
-			parserOptions: {
-				ecmaVersion: 'latest',
-				sourceType: 'module',
-			},
-		},
-		plugins: {
-			'@typescript-eslint': tseslint,
-		},
-		rules: {
-			// TypeScript specific rules (soft)
-			'@typescript-eslint/no-unused-vars': ['warn', {
-				argsIgnorePattern: '^_',
-				varsIgnorePattern: '^_',
-			}],
-			'@typescript-eslint/no-explicit-any': 'warn',
-			'@typescript-eslint/explicit-function-return-type': 'off',
-			'@typescript-eslint/explicit-module-boundary-types': 'off',
-			'@typescript-eslint/no-non-null-assertion': 'warn',
-			'@typescript-eslint/no-var-requires': 'off',
-
-			// General rules (soft)
-			'no-console': 'off',
-			'no-debugger': 'warn',
-			'no-unused-vars': 'off',
-			'prefer-const': 'warn',
-			'no-var': 'warn',
-			'no-undef': 'off',
-
-			// Bun-specific optimizations
-			'no-process-exit': 'off',
-			'no-buffer-constructor': 'off',
-
-			// Code style (soft)
-			'camelcase': ['warn', { properties: 'never' }],
-			'eqeqeq': ['warn', 'always'],
-			'curly': ['warn', 'all'],
-			'no-eval': 'error',
-			'no-implied-eval': 'error',
-			'no-new-func': 'error',
-			'quotes': ['warn', 'single', { avoidEscape: true }],
-			'jsx-quotes': ['warn', 'prefer-single'],
-			'semi': ['warn', 'never'],
-		},
-	},
-]
+export default config
 ```
 
 ### With Custom Rules
 
 ```javascript
+import { config } from 'ttsp-eslint-config'
+
 export default [
-	// ... base config
+	...config,
 	{
 		rules: {
 			// Your custom rules here
@@ -117,6 +68,12 @@ export default [
 - `process.exit` allowed
 - Buffer constructor warnings disabled
 - Modern ES features enabled
+
+### Code Style Rules
+- Single quotes preferred
+- No semicolons required
+- camelCase for variables and functions
+- PascalCase for classes and interfaces
 
 ### Test Files
 - Jest environment enabled
