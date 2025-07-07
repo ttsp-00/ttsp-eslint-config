@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # TTSP ESLint Config
 
 Shared ESLint configuration for TTSP packages with TypeScript and Bun support.
@@ -8,7 +7,6 @@ Shared ESLint configuration for TTSP packages with TypeScript and Bun support.
 - **Latest ESLint 9.x** with TypeScript 8.x support
 - **Soft rules** for better developer experience
 - **Bun runtime** optimizations
-- **Prettier integration** for consistent formatting
 - **Test files** support with relaxed rules
 - **Modern ES2024** features enabled
 
@@ -22,24 +20,78 @@ bun add -D ttsp-eslint-config
 
 ### Basic Setup
 
-Create `.eslintrc.js` in your project:
+Create `eslint.config.js` in your project:
 
 ```javascript
-module.exports = {
-	extends: ['ttsp-eslint-config'],
-};
+import js from '@eslint/js'
+import tseslint from '@typescript-eslint/eslint-plugin'
+import tsparser from '@typescript-eslint/parser'
+
+export default [
+	js.configs.recommended,
+	{
+		files: ['**/*.ts', '**/*.js'],
+		languageOptions: {
+			parser: tsparser,
+			parserOptions: {
+				ecmaVersion: 'latest',
+				sourceType: 'module',
+			},
+		},
+		plugins: {
+			'@typescript-eslint': tseslint,
+		},
+		rules: {
+			// TypeScript specific rules (soft)
+			'@typescript-eslint/no-unused-vars': ['warn', {
+				argsIgnorePattern: '^_',
+				varsIgnorePattern: '^_',
+			}],
+			'@typescript-eslint/no-explicit-any': 'warn',
+			'@typescript-eslint/explicit-function-return-type': 'off',
+			'@typescript-eslint/explicit-module-boundary-types': 'off',
+			'@typescript-eslint/no-non-null-assertion': 'warn',
+			'@typescript-eslint/no-var-requires': 'off',
+
+			// General rules (soft)
+			'no-console': 'off',
+			'no-debugger': 'warn',
+			'no-unused-vars': 'off',
+			'prefer-const': 'warn',
+			'no-var': 'warn',
+			'no-undef': 'off',
+
+			// Bun-specific optimizations
+			'no-process-exit': 'off',
+			'no-buffer-constructor': 'off',
+
+			// Code style (soft)
+			'camelcase': ['warn', { properties: 'never' }],
+			'eqeqeq': ['warn', 'always'],
+			'curly': ['warn', 'all'],
+			'no-eval': 'error',
+			'no-implied-eval': 'error',
+			'no-new-func': 'error',
+			'quotes': ['warn', 'single', { avoidEscape: true }],
+			'jsx-quotes': ['warn', 'prefer-single'],
+			'semi': ['warn', 'never'],
+		},
+	},
+]
 ```
 
 ### With Custom Rules
 
 ```javascript
-module.exports = {
-	extends: ['ttsp-eslint-config'],
-	rules: {
-		// Your custom rules here
-		'no-console': 'error',
+export default [
+	// ... base config
+	{
+		rules: {
+			// Your custom rules here
+			'no-console': 'error',
+		},
 	},
-};
+]
 ```
 
 ### Package.json Scripts
@@ -48,8 +100,7 @@ module.exports = {
 {
 	"scripts": {
 		"lint": "eslint . --ext .ts,.js",
-		"lint:fix": "eslint . --ext .ts,.js --fix",
-		"format": "prettier --write ."
+		"lint:fix": "eslint . --ext .ts,.js --fix"
 	}
 }
 ```
@@ -77,25 +128,7 @@ module.exports = {
 This config requires:
 - ESLint 9.x
 - TypeScript 5.x
-- Prettier 3.x
 
 ## License
 
 MIT
-=======
-# Elysia with Bun runtime
-
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
-
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
-
-Open http://localhost:3000/ with your browser to see the result.
->>>>>>> 14eaee70628a459f300e75726e8c7f7deb962fd5
