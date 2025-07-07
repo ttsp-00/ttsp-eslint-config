@@ -24,7 +24,7 @@ bun add -D ttsp-eslint-config
 Create `eslint.config.js` in your project:
 
 ```javascript
-import { config } from 'ttsp-eslint-config'
+import config from 'ttsp-eslint-config'
 
 export default config
 ```
@@ -32,7 +32,7 @@ export default config
 ### With Custom Rules
 
 ```javascript
-import { config } from 'ttsp-eslint-config'
+import config from 'ttsp-eslint-config'
 
 export default [
 	...config,
